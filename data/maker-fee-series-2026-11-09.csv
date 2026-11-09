@@ -1,0 +1,164 @@
+ticker,title,category,fee_type,fee_multiplier
+KXBTCMAX125,When will bitcoin hit 125k?,Crypto,quadratic_with_maker_fees,1
+KXBTCMAX150,When will bitcoin hit 150k?,Crypto,quadratic_with_maker_fees,1
+KXAAAGASM,US gas price,Economics,quadratic_with_maker_fees,1
+KXCPI,CPI,Economics,quadratic_with_maker_fees,1
+KXCPIYOY,Inflation,Economics,quadratic_with_maker_fees,1
+KXEGGS,Egg prices,Economics,quadratic_with_maker_fees,1
+KXFED,Fed funds rate,Economics,quadratic_with_maker_fees,1
+KXFEDDECISION,Fed meeting,Economics,quadratic_with_maker_fees,1
+KXGDP,US GDP growth,Economics,quadratic_with_maker_fees,1
+KXPAYROLLS,Jobs numbers,Economics,quadratic_with_maker_fees,1
+KXRATECUTCOUNT,Number of rate cuts,Economics,quadratic_with_maker_fees,1
+KXU3,Unemployment,Economics,quadratic_with_maker_fees,1
+KXEMMYCACTO,Emmys Award for Lead Comedy Actor,Entertainment,quadratic_with_maker_fees,1
+KXEMMYCACTR,Emmys Award for Lead Comedy Actress,Entertainment,quadratic_with_maker_fees,1
+KXEMMYCSERIES,Emmys Award for Comedy Series,Entertainment,quadratic_with_maker_fees,1
+KXEMMYDACTO,Emmys Award for Lead Drama Actor,Entertainment,quadratic_with_maker_fees,1
+KXEMMYDACTR,Emmys Award for Lead Drama Actress,Entertainment,quadratic_with_maker_fees,1
+KXEMMYDSERIES,Emmys Award for Drama Series,Entertainment,quadratic_with_maker_fees,1
+KXSUPERBOWLHEADLINE,Who will headline super bowl ,Entertainment,quadratic_with_maker_fees,1
+KXMVECROSSCATEGORY,MVE Cross Category,Exotics,quadratic_with_combo_maker_fees,1
+KXMVECROSSCATEGORY-SHARD1,MVE Cross Category,Exotics,quadratic_with_combo_maker_fees,1
+KXMVESPORTSMULTIGAMEEXTENDED,MVE Sport Mutli Game,Exotics,quadratic_with_combo_maker_fees,1
+KXA100MS,A100 Monthly,Financials,quadratic_with_maker_fees,1
+KXA100WS,A100 Weekly,Financials,quadratic_with_maker_fees,1
+KXB200MS,B200 Monthly,Financials,quadratic_with_maker_fees,1
+KXB200WS,B200 Weekly,Financials,quadratic_with_maker_fees,1
+KXH100MS,H100 Monthly,Financials,quadratic_with_maker_fees,1
+KXH100WS,H100 Weekly,Financials,quadratic_with_maker_fees,1
+KXH200MS,H200 Monthly,Financials,quadratic_with_maker_fees,1
+KXH200WS,Weekly H200,Financials,quadratic_with_maker_fees,1
+KXINXY,S&P 500 yearly range,Financials,quadratic_with_maker_fees,1
+KXIPO,IPOs,Financials,quadratic_with_maker_fees,1
+KXNASDAQ100Y,Nasdaq yearly range,Financials,quadratic_with_maker_fees,1
+KXRTX5090MS,RTX 5090 Monthly,Financials,quadratic_with_maker_fees,1
+KXRTX5090WS,RTX 5090 Weekly,Financials,quadratic_with_maker_fees,1
+KXA100MAX,A100 Yearly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXA100MON,A100 Monthly Price,Science and Technology,quadratic_with_maker_fees,1
+KXA100Q,A100 Quarterly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXA100W,A100 Weekly Price,Science and Technology,quadratic_with_maker_fees,1
+KXB200MAX,B100 Yearly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXB200MON,B200 Monthly Price,Science and Technology,quadratic_with_maker_fees,1
+KXB200Q,B200 Quarterly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXB200W,B200 Weekly Price,Science and Technology,quadratic_with_maker_fees,1
+KXH100MAX,H100 Yearly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXH100MON,H100 Monthly Price,Science and Technology,quadratic_with_maker_fees,1
+KXH100Q,H100 Quarterly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXH100W,H100 Weekly Price,Science and Technology,quadratic_with_maker_fees,1
+KXH200MAX,H200 Yearly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXH200MON,H200 Monthly Price,Science and Technology,quadratic_with_maker_fees,1
+KXH200Q,H200 Quarterly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXH200W,H200 Weekly Price,Science and Technology,quadratic_with_maker_fees,1
+KXLLM1,Year-end top LLM,Science and Technology,quadratic_with_maker_fees,1
+KXRTX5090MAX,RTX5090 Yearly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXRTX5090MON,RTX 5059 Monthly Price,Science and Technology,quadratic_with_maker_fees,1
+KXRTX5090Q,RTX5090 Quarterly Directional Price,Science and Technology,quadratic_with_maker_fees,1
+KXRTX5090W,RTX 5090 Weekly Price,Science and Technology,quadratic_with_maker_fees,1
+KXAOMENSINGLES,Argentina Open men's singles,Sports,quadratic_with_maker_fees,1
+KXATPMATCH,ATP Tennis Match,Sports,quadratic_with_maker_fees,1
+KXBALLONDOR,Ballon d'Or,Sports,quadratic_with_maker_fees,1
+KXBUNDESLIGA,BUNDESLIGA,Sports,quadratic_with_maker_fees,1
+KXBUNDESLIGAGAME,Bundesliga Game,Sports,quadratic_with_maker_fees,1
+KXCLUBWC,Club World Cup Championship,Sports,quadratic_with_maker_fees,1
+KXCONNSMYTHE,Conn Smythe trophy,Sports,quadratic_with_maker_fees,1
+KXEPLGAME,English Premier League Game,Sports,quadratic_with_maker_fees,1
+KXEPLTOP4,EPL top 4 teams,Sports,quadratic_with_maker_fees,1
+KXF1RACE,F1 Race,Sports,quadratic_with_maker_fees,1
+KXF1RACEPODIUM,F1 Race Podium Finisher,Sports,quadratic_with_maker_fees,1
+KXFOMEN,French Open Men's,Sports,quadratic_with_maker_fees,1
+KXFOMENSINGLES,French Open men's singles,Sports,quadratic_with_maker_fees,1
+KXFOWOMEN,French Open Women's,Sports,quadratic_with_maker_fees,1
+KXFOWOMENSINGLES,French Open women's singles,Sports,quadratic_with_maker_fees,1
+KXHEISMAN,Heisman Trophy Winner,Sports,quadratic_with_maker_fees,1
+KXINDY500,Indy 500 Winner,Sports,quadratic_with_maker_fees,1
+KXLALIGA,LA LIGA,Sports,quadratic_with_maker_fees,1
+KXLALIGAGAME,La Liga Game,Sports,quadratic_with_maker_fees,1
+KXLIGUE1,LIGUE 1,Sports,quadratic_with_maker_fees,1
+KXLIGUE1GAME,Ligue 1 Game,Sports,quadratic_with_maker_fees,1
+KXMARMAD,Men's College Basketball Tournament Champion,Sports,quadratic_with_maker_fees,1
+KXMENWORLDCUP,Men's World Cup winner,Sports,quadratic_with_maker_fees,1
+KXMLB,World Series,Sports,quadratic_with_maker_fees,1
+KXMLBAL,MLB American League Championship,Sports,quadratic_with_maker_fees,1
+KXMLBASGAME,Professional Baseball All-Star Game,Sports,quadratic_with_maker_fees,1
+KXMLBGAME,Professional Baseball Game,Sports,quadratic_with_maker_fees,0.5
+KXMLBHRDERBY,Pro Baseball Homerun Derby,Sports,quadratic_with_maker_fees,1
+KXMLBNL,MLB National League Championship,Sports,quadratic_with_maker_fees,1
+KXMLBSERIES,Pro Baseball Series Winner,Sports,quadratic_with_maker_fees,1
+KXNASCAR,NASCAR Cup Series playoffs,Sports,quadratic_with_maker_fees,1
+KXNASCARRACE,NASCAR Race,Sports,quadratic_with_maker_fees,1
+KXNASCARRACEOLD,NASCAR Race winner,Sports,quadratic_with_maker_fees,1
+KXNATHANDOGS,Nathan's hot dogs,Sports,quadratic_with_maker_fees,1
+KXNATHANSHD,Nathan's Hot Dog Eating Contest Winner,Sports,quadratic_with_maker_fees,1
+KXNBA,Pro Basketball Champion,Sports,quadratic_with_maker_fees,1
+KXNBACOY,NBA Coach of the Year,Sports,quadratic_with_maker_fees,1
+KXNBAEAST,Pro Basketball Eastern Conference Champion,Sports,quadratic_with_maker_fees,1
+KXNBAFINALSMVP,Finals MVP,Sports,quadratic_with_maker_fees,1
+KXNBAGAME,NBA Game,Sports,quadratic_with_maker_fees,1
+KXNBAMVP,NBA MVP,Sports,quadratic_with_maker_fees,1
+KXNBAROY,NBA Rookie of the Year,Sports,quadratic_with_maker_fees,1
+KXNBASERIES,NBA Series Winner,Sports,quadratic_with_maker_fees,1
+KXNBASPREAD,NBA Spread,Sports,quadratic_with_maker_fees,1
+KXNBATOTAL,NBA Total,Sports,quadratic_with_maker_fees,1
+KXNBAWEST,Pro Basketball Western Conference Champion,Sports,quadratic_with_maker_fees,1
+KXNCAAF,NCAAF Championship,Sports,quadratic_with_maker_fees,1
+KXNCAAFACC,ACC Champion,Sports,quadratic_with_maker_fees,1
+KXNCAAFB10,Big Ten Champion,Sports,quadratic_with_maker_fees,1
+KXNCAAFB12,Big 12 Champion,Sports,quadratic_with_maker_fees,1
+KXNCAAFGAME,College Football Game,Sports,quadratic_with_maker_fees,1
+KXNCAAFPLAYOFF,College Football Playoff Qualifiers,Sports,quadratic_with_maker_fees,1
+KXNCAAFSEC,SEC Champion,Sports,quadratic_with_maker_fees,1
+KXNCAAFSPREAD,College Football Spread,Sports,quadratic_with_maker_fees,1
+KXNCAAFTOTAL,College Football Total Points,Sports,quadratic_with_maker_fees,1
+KXNCAAMBGAME,Men's College Basketball Game,Sports,quadratic_with_maker_fees,1
+KXNCAAMBSPREAD,Men's College Basketball Spread,Sports,quadratic_with_maker_fees,1
+KXNCAAMBTOTAL,Men's College Basketball Total Points,Sports,quadratic_with_maker_fees,1
+KXNFL2TD,Pro Football Multiple Touchdowns,Sports,quadratic_with_maker_fees,1
+KXNFLAFCCHAMP,American Football Conference Champion,Sports,quadratic_with_maker_fees,1
+KXNFLAFCEAST,American Football Conference East Winner,Sports,quadratic_with_maker_fees,1
+KXNFLAFCNORTH,American Football Conference North Winner,Sports,quadratic_with_maker_fees,1
+KXNFLAFCSOUTH,American Football Conference South Winner,Sports,quadratic_with_maker_fees,1
+KXNFLAFCWEST,American Football Conference West Winner,Sports,quadratic_with_maker_fees,1
+KXNFLANYTD,Pro Football Anytime Touchdown,Sports,quadratic_with_maker_fees,1
+KXNFLCOTY,AP Pro Football Coach Of The Year,Sports,quadratic_with_maker_fees,1
+KXNFLCPOTY,AP Pro Football Comeback Player of the Year,Sports,quadratic_with_maker_fees,1
+KXNFLDPOTY,AP Pro Football Defensive Player Of The Year,Sports,quadratic_with_maker_fees,1
+KXNFLDROTY,AP Pro Football Defensive Rookie of the Year,Sports,quadratic_with_maker_fees,1
+KXNFLFIRSTTD,Pro Football First Touchdown,Sports,quadratic_with_maker_fees,1
+KXNFLGAME,NFL Game,Sports,quadratic_with_maker_fees,1
+KXNFLMVP,AP Pro Football Regular Season MVP,Sports,quadratic_with_maker_fees,1
+KXNFLNFCCHAMP,National Football Conference Champion,Sports,quadratic_with_maker_fees,1
+KXNFLNFCEAST,National Football Conference East Winner,Sports,quadratic_with_maker_fees,1
+KXNFLNFCNORTH,National Football Conference North Winner,Sports,quadratic_with_maker_fees,1
+KXNFLNFCSOUTH,National Football Conference South Winner,Sports,quadratic_with_maker_fees,1
+KXNFLNFCWEST,National Football Conference West Winner,Sports,quadratic_with_maker_fees,1
+KXNFLOPOTY,AP Pro Football Offensive Player Of The Year,Sports,quadratic_with_maker_fees,1
+KXNFLOROTY,AP Pro Football Offensive Rookie of the Year,Sports,quadratic_with_maker_fees,1
+KXNFLSPREAD,Pro Football Spread,Sports,quadratic_with_maker_fees,1
+KXNFLTOTAL,Pro Football Total Points,Sports,quadratic_with_maker_fees,1
+KXNHL,Stanley Cup,Sports,quadratic_with_maker_fees,1
+KXNHLEAST,Eastern Conference Championship,Sports,quadratic_with_maker_fees,1
+KXNHLGAME,NHL Game,Sports,quadratic_with_maker_fees,1
+KXNHLSERIES,NHL Series Winner,Sports,quadratic_with_maker_fees,1
+KXNHLWEST,Western Conference Champion,Sports,quadratic_with_maker_fees,1
+KXPGA,PGA Championship,Sports,quadratic_with_maker_fees,1
+KXPGARYDER,Ryder Cup,Sports,quadratic_with_maker_fees,1
+KXPGASOLHEIM,Solheim Cup,Sports,quadratic_with_maker_fees,1
+KXPGATOUR,PGA Tour,Sports,quadratic_with_maker_fees,1
+KXSB,Super Bowl,Sports,quadratic_with_maker_fees,1
+KXSERIEA,Serie A ,Sports,quadratic_with_maker_fees,1
+KXSERIEAGAME,Serie A Game,Sports,quadratic_with_maker_fees,1
+KXTHEOPEN,The Open Championship,Sports,quadratic_with_maker_fees,1
+KXTOURDEFRANCE,Tour de France winner,Sports,quadratic_with_maker_fees,1
+KXUCL,UEFA Champions League,Sports,quadratic_with_maker_fees,1
+KXUCLGAME,UEFA Champions League Game,Sports,quadratic_with_maker_fees,1
+KXUEFACL,UEFA Champions League,Sports,quadratic_with_maker_fees,1
+KXUSOMENSINGLES,US Open men's singles,Sports,quadratic_with_maker_fees,1
+KXUSOPEN,US Open,Sports,quadratic_with_maker_fees,1
+KXUSOWOMENSINGLES,US Open women's singles,Sports,quadratic_with_maker_fees,1
+KXWCGAME,World Cup Game,Sports,quadratic_with_maker_fees,1
+KXWMENSINGLES,WIMBLEDON men's singles,Sports,quadratic_with_maker_fees,1
+KXWNBA,WNBA Champion,Sports,quadratic_with_maker_fees,1
+KXWNBAGAME,Women's Pro Basketball Game,Sports,quadratic_with_maker_fees,1
+KXWTAMATCH,WTA Tennis Match,Sports,quadratic_with_maker_fees,1
+KXWWOMENSINGLES,Wimbledon women's singles,Sports,quadratic_with_maker_fees,1

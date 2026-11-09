@@ -27,6 +27,17 @@ This follows Kalshi's documented [fee rounding](https://docs.kalshi.com/getting_
 
 Selling before settlement pays the fee again on the way out, and the formula is symmetric: 40c in and 60c out cost $1.68 each on 100 contracts.
 
+## Which markets charge a maker fee
+
+`fee_types.py` reads Kalshi's public series endpoint and lists every series that charges resting orders:
+
+```sh
+python3 fee_types.py                  # counts by category
+python3 fee_types.py --csv out.csv    # the full list
+```
+
+On November 9, 2026: 163 of 15,967 series charged a maker fee. 107 were sports (mostly NFL, NBA, NHL, college football and Champions League game markets), 21 science and technology (mostly GPU rental prices), 13 financials, 10 economics (including CPI and the Fed funds rate), 7 entertainment, 3 exotics and 2 crypto. None of the 4,901 politics and elections series did. The full list is in [`data/maker-fee-series-2026-11-09.csv`](data/maker-fee-series-2026-11-09.csv).
+
 ## Calculators in the browser
 
 The same math, free, no sign-up:
