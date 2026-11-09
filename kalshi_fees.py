@@ -19,27 +19,32 @@ from fractions import Fraction
 __all__ = ["Fill", "fill", "fee_per_contract_cents", "breakeven", "kelly", "american_odds"]
 
 
-def _ceil_div(a: int, b: int) -> int:
-    return -(-a // b)
+def _ceil_div(a, b) -> int:
+    """Ceiling of a / b for integers or Fractions."""
+    q = Fraction(a) / Fraction(b)
+    return -(-q.numerator // q.denominator)
 
 
 @dataclass(frozen=True)
 class Fill:
-    contracts: int
+    contracts: Fraction
     price_cents: Fraction
     cost: Fraction      # dollars, before the fee
     fee: Fraction       # dollars, after grid alignment
     total: Fraction     # dollars, cost + fee
 
     def __str__(self) -> str:
-        return "%d @ %sc: cost $%.4f, fee $%.4f, total $%.4f" % (
-            self.contracts, self.price_cents, self.cost, self.fee, self.total)
+        return "%s @ %sc: cost $%.4f, fee $%.4f, total $%.4f" % (
+            float(self.contracts) if self.contracts.denominator != 1 else self.contracts,
+            self.price_cents, self.cost, self.fee, self.total)
 
 
-def fill(contracts: int, price_cents, maker: bool = False, multiplier=1, grid_dollars="0.0001") -> Fill:
-    """Cost, fee and total for one fill of `contracts` at `price_cents` (1 to 99, two decimals allowed)."""
-    if contracts < 1:
-        raise ValueError("contracts must be at least 1")
+def fill(contracts, price_cents, maker: bool = False, multiplier=1, grid_dollars="0.0001") -> Fill:
+    """Cost, fee and total for one fill of `contracts` (fractional to 0.01 allowed) at `price_cents`
+    (1 to 99, two decimals allowed)."""
+    contracts = Fraction(str(contracts))
+    if contracts <= 0 or (contracts * 100).denominator != 1:
+        raise ValueError("contracts must be positive, in steps of 0.01")
     k = Fraction(str(price_cents)) * 100          # hundredths of a cent
     if k.denominator != 1 or not 100 <= k <= 9900:
         raise ValueError("price must be between 1c and 99c with at most two decimals")
@@ -49,7 +54,7 @@ def fill(contracts: int, price_cents, maker: bool = False, multiplier=1, grid_do
         raise ValueError("multiplier must be a non-negative multiple of 0.5")
     mh = int(mh)
     grid = int(Fraction(grid_dollars) * 1_000_000)
-    cost = contracts * k * 100                    # micro dollars
+    cost = int(contracts * k * 100)               # micro dollars (exact: contracts step 0.01)
     raw = _ceil_div(contracts * 7 * mh * k * (10000 - k), 80000 if maker else 20000) if mh else 0
     total = _ceil_div(cost + raw, grid) * grid
     to_usd = lambda micro: Fraction(micro, 1_000_000)
