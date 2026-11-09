@@ -23,6 +23,8 @@ Kalshi's general schedule, per fill of `n` contracts at price `P` in dollars:
 
 The fee is largest at 50c (1.75c a contract to take) and shrinks toward the edges (0.63c at 10c or 90c). Some markets use a different multiplier; pass `multiplier=`. Amounts are kept in micro dollars, the fee rounds up once per fill (not per contract), and cost plus fee aligns up to the account grid (`grid_dollars="0.0001"` by default, or `"0.01"`). Fractional contracts in steps of 0.01 are supported. Checked against a real fill: 388.19 contracts at 76c had a recorded `fee_cost` of $4.9564; the raw fee is $4.95640992 and this package returns $4.9565 on the $0.0001 grid. Rounding to the whole cent gives $4.96, and rounding per contract gives $7.76.
 
+This follows Kalshi's documented [fee rounding](https://docs.kalshi.com/getting_started/fee_rounding): the trade fee is rounded up to $0.000001, then the balance change is aligned to $0.0001 for direct members or $0.01 for members clearing through a broker (`grid_dollars="0.01"`). Across the fills of one order, Kalshi's fee accumulator rebates rounding overpayment, so an order's total converges to what a single equivalent fill costs; `fill()` models that single fill.
+
 Selling before settlement pays the fee again on the way out, and the formula is symmetric: 40c in and 60c out cost $1.68 each on 100 contracts.
 
 ## Calculators in the browser
