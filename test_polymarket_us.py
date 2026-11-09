@@ -1,6 +1,6 @@
 from decimal import Decimal as D
 
-from polymarket_us import account_rate, compare, rate, taker_fee
+from polymarket_us import account_rate, combo_fee, compare, rate, taker_fee
 
 
 def test_tiers():
@@ -34,3 +34,20 @@ def test_new_account():
     assert account_rate(30, 60000, 2400) == D("0.075")
     # from day 31 the first week no longer counts
     assert account_rate(31, 2400, 2400) == D("0.095")
+
+
+def test_combo():
+    vols = (0, 10000, 50000, 250000)
+    # 1,000 combo contracts, before the November 11 change and in each tier after it
+    table = {
+        5: ("6.76", "6.96", "6.48", "6.01", "5.74"),
+        10: ("11.83", "12.49", "11.59", "10.69", "10.19"),
+        15: ("15.52", "16.81", "15.54", "14.26", "13.56"),
+        25: ("19.75", "22.56", "20.68", "18.81", "17.78"),
+        50: ("20.03", "25.62", "23.12", "20.62", "19.25"),
+    }
+    for cents, (before, *after) in table.items():
+        assert combo_fee(1000, cents, tiered=False) == D(before)
+        assert [combo_fee(1000, cents, v) for v in vols] == [D(x) for x in after]
+    # before the change the volume does not matter
+    assert combo_fee(1000, 25, 250000, tiered=False) == combo_fee(1000, 25, 0, tiered=False)

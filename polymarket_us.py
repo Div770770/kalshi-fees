@@ -9,7 +9,7 @@ Since 1:00 PM ET on November 6, 2026 the rate depends on your taker volume over 
     $250,000 or more        0.0695   (the rate everyone paid before November 6)
 Volume is what you paid for the side you received (contracts x price), not face value. A resting
 order that fills pays no fee. New accounts pay 0.0695 for their first seven days. Combos use a
-separate curve and are not covered here.
+separate curve, in combo_fee below.
 
 Source: https://docs.polymarket.us/fees (read November 9, 2026). Check it before you rely on this.
 """
@@ -18,7 +18,7 @@ from decimal import Decimal, ROUND_HALF_EVEN
 
 from kalshi_fees import fill
 
-__all__ = ["TIERS", "rate", "account_rate", "taker_fee", "compare"]
+__all__ = ["TIERS", "rate", "account_rate", "taker_fee", "combo_fee", "compare"]
 
 # (30 day taker volume floor in dollars, rate), highest floor first
 TIERS = (
@@ -61,6 +61,23 @@ def taker_fee(contracts, price_cents, volume_30d=0) -> Decimal:
     if n <= 0 or not Decimal("0") < p < Decimal("1"):
         raise ValueError("contracts must be positive and the price between 0c and 100c")
     return (rate(volume_30d) * n * p * (1 - p)).quantize(Decimal("0.01"), rounding=ROUND_HALF_EVEN)
+
+
+def combo_fee(contracts, price_cents, volume_30d=0, tiered=True) -> Decimal:
+    """Polymarket US taker fee in dollars on a combo fill, rounded to the cent (halves to even).
+
+    From 1:00 PM ET on November 11, 2026 (tiered=True):
+        contracts * P * [rate * (1 - P) + 0.06 * (1 - P)^4]     with your tier's rate
+    Before then (tiered=False), for every account:
+        contracts * P * [0.0695 * (1 - P) + 0.085 * (1 - P)^4]
+    Combo fills earn no maker rebate.
+    """
+    n, p = Decimal(str(contracts)), Decimal(str(price_cents)) / 100
+    if n <= 0 or not Decimal("0") < p < Decimal("1"):
+        raise ValueError("contracts must be positive and the price between 0c and 100c")
+    q = 1 - p
+    r, tail = (rate(volume_30d), Decimal("0.06")) if tiered else (TIERS[0][1], Decimal("0.085"))
+    return (n * p * (r * q + tail * q ** 4)).quantize(Decimal("0.01"), rounding=ROUND_HALF_EVEN)
 
 
 def compare(contracts, price_cents, volume_30d=0) -> dict:

@@ -60,6 +60,26 @@ account_rate(8, 2400, 2400)    # Decimal('0.085'): $2,400 x 30/7 is $10,285.71
 account_rate(31, 2400, 2400)   # Decimal('0.095')
 ```
 
+Combos use their own curve, and it changes at 1:00 PM ET on November 11, 2026. Until then every account pays contracts x P x [0.0695 x (1 - P) + 0.085 x (1 - P)^4]. From then it is contracts x P x [your tier's rate x (1 - P) + 0.06 x (1 - P)^4]. `combo_fee` does both:
+
+```python
+from polymarket_us import combo_fee
+
+combo_fee(1000, 25, tiered=False)   # Decimal('19.75'), every account until the change
+combo_fee(1000, 25)                 # Decimal('22.56'), below $10,000 of 30 day volume
+combo_fee(1000, 25, 250000)         # Decimal('17.78'), $250,000 or more
+```
+
+Taker fee on 1,000 combo contracts:
+
+| Combo price | Until Nov 11 | Below $10,000 | $10,000 to $50,000 | $50,000 to $250,000 | $250,000 or more |
+|---:|---:|---:|---:|---:|---:|
+| 5c | $6.76 | $6.96 | $6.48 | $6.01 | $5.74 |
+| 10c | $11.83 | $12.49 | $11.59 | $10.69 | $10.19 |
+| 15c | $15.52 | $16.81 | $15.54 | $14.26 | $13.56 |
+| 25c | $19.75 | $22.56 | $20.68 | $18.81 | $17.78 |
+| 50c | $20.03 | $25.62 | $23.12 | $20.62 | $19.25 |
+
 Taker fee on 1,000 contracts (`python3 polymarket_us.py` prints this):
 
 | Price | Kalshi | Polymarket US, below $10,000 | $10,000 to $50,000 | $50,000 to $250,000 | $250,000 or more |
@@ -68,7 +88,7 @@ Taker fee on 1,000 contracts (`python3 polymarket_us.py` prints this):
 | 30c or 70c | $14.70 | $19.95 | $17.85 | $15.75 | $14.60 |
 | 50c | $17.50 | $23.75 | $21.25 | $18.75 | $17.38 |
 
-Resting orders run the other way on some markets: Polymarket US charges them nothing, and Kalshi charges them on the series listed above. New Polymarket US accounts pay 0.0695 for their first seven days, and combos use a separate curve that this file does not cover. Source: [Polymarket US fee schedule](https://docs.polymarket.us/fees), read November 9, 2026. On the same day Polymarket's public market API (`gateway.polymarket.us/v1/markets`) listed `feeCoefficient` 0.095, the Tier 1 rate, on all 3,000 open markets checked. The full Polymarket US schedule written out (tiers, how volume is counted, the new account window, rebates, combos): [Polymarket US fees](https://evdesk.ai/learn/polymarket-us-fees). The comparison written out, with a worked example: [Kalshi vs Polymarket US fees](https://evdesk.ai/learn/kalshi-vs-polymarket-fees).
+Resting orders run the other way on some markets: Polymarket US charges them nothing, and Kalshi charges them on the series listed above. New Polymarket US accounts pay 0.0695 for their first seven days, and combos use a separate curve (`combo_fee`). Source: [Polymarket US fee schedule](https://docs.polymarket.us/fees), read November 9, 2026. On the same day Polymarket's public market API (`gateway.polymarket.us/v1/markets`) listed `feeCoefficient` 0.095, the Tier 1 rate, on all 3,000 open markets checked. The full Polymarket US schedule written out (tiers, how volume is counted, the new account window, rebates, combos): [Polymarket US fees](https://evdesk.ai/learn/polymarket-us-fees). The comparison written out, with a worked example: [Kalshi vs Polymarket US fees](https://evdesk.ai/learn/kalshi-vs-polymarket-fees).
 
 ## Calculators in the browser
 
