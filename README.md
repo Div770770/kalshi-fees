@@ -98,6 +98,7 @@ The same math, free, no sign-up:
 - [Kalshi odds converter](https://evdesk.ai/tools/kalshi-odds-converter): cents to American, decimal and fractional odds, with the after-fee break-even
 - [Kelly and EV calculator](https://evdesk.ai/tools/kelly-ev-calculator): expected value and Kelly stake with the fee included
 - [Kalshi vs Polymarket US fee calculator](https://evdesk.ai/tools/kalshi-vs-polymarket-fee-calculator): the taker fee on the same order at both exchanges, by Polymarket US volume tier
+- [Polymarket US combo fee calculator](https://evdesk.ai/tools/polymarket-us-combo-fee-calculator): the combo taker fee before and after the November 11, 2026 change, by tier
 
 ## Tests
 
