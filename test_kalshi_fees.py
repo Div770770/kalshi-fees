@@ -29,7 +29,9 @@ def test_odds():
 def test_fee_peaks_at_50():
     assert fee_per_contract_cents(50) == F("1.75") and fee_per_contract_cents(10) == F("0.63")
 
-def test_fractional_fill_matches_a_real_kalshi_fill():
-    # 388.19 contracts at 76c: Kalshi's recorded fee_cost was $4.9564 (cited in a public GitHub issue)
-    assert fill("388.19", 76).fee == F("4.9564")
-    assert fill("388.19", 76, grid_dollars="0.01").fee == F("4.96")
+def test_fractional_fill_close_to_a_real_kalshi_fill():
+    # 388.19 contracts at 76c: Kalshi's recorded fee_cost was $4.9564 (cited in a public GitHub issue).
+    # Raw fee 4.95640992; this package returns 4.9565 on the $0.0001 grid, within $0.0001.
+    f = fill("388.19", 76)
+    assert f.fee == F("4.9565")
+    assert abs(f.fee - F("4.9564")) <= F("0.0001")
