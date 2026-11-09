@@ -1,6 +1,6 @@
 from decimal import Decimal as D
 
-from polymarket_us import compare, rate, taker_fee
+from polymarket_us import account_rate, compare, rate, taker_fee
 
 
 def test_tiers():
@@ -23,3 +23,14 @@ def test_month_at_50c():
     # $9,000 of volume at 50c is 18,000 contracts: $315.00 on Kalshi, $427.50 on Polymarket US below $10,000
     c = compare(18000, 50, 9000)
     assert c["kalshi"] == D("315.0000") and c["polymarket_us"] == D("427.50") and c["difference"] == D("112.5000")
+
+
+def test_new_account():
+    # days 1 to 7 pay the top tier's rate whatever the volume
+    assert account_rate(1) == account_rate(7, 0, 0) == D("0.0695")
+    # day 8 to 30: first week x 30/7 against trailing, whichever is higher. $2,400 x 30/7 = $10,285.71
+    assert account_rate(8, 2400, 2400) == D("0.085")
+    assert account_rate(8, 2300, 2300) == D("0.095")
+    assert account_rate(30, 60000, 2400) == D("0.075")
+    # from day 31 the first week no longer counts
+    assert account_rate(31, 2400, 2400) == D("0.095")

@@ -50,6 +50,16 @@ taker_fee(1000, 50, 4000)      # Decimal('23.75'); the same order on Kalshi is $
 compare(18000, 50, 9000)       # $9,000 of volume at 50c: Kalshi 315.00, Polymarket US 427.50
 ```
 
+A new account pays 0.0695 for its first seven days, then until day 30 its tier uses the higher of its first week scaled by 30/7 and its trailing volume. `account_rate(day, trailing_volume, first_week_volume)` returns the rate for that day:
+
+```python
+from polymarket_us import account_rate
+
+account_rate(3)                # Decimal('0.0695'), days 1 to 7
+account_rate(8, 2400, 2400)    # Decimal('0.085'): $2,400 x 30/7 is $10,285.71
+account_rate(31, 2400, 2400)   # Decimal('0.095')
+```
+
 Taker fee on 1,000 contracts (`python3 polymarket_us.py` prints this):
 
 | Price | Kalshi | Polymarket US, below $10,000 | $10,000 to $50,000 | $50,000 to $250,000 | $250,000 or more |

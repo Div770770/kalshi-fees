@@ -18,7 +18,7 @@ from decimal import Decimal, ROUND_HALF_EVEN
 
 from kalshi_fees import fill
 
-__all__ = ["TIERS", "rate", "taker_fee", "compare"]
+__all__ = ["TIERS", "rate", "account_rate", "taker_fee", "compare"]
 
 # (30 day taker volume floor in dollars, rate), highest floor first
 TIERS = (
@@ -35,6 +35,24 @@ def rate(volume_30d=0) -> Decimal:
     if v < 0:
         raise ValueError("volume must not be negative")
     return next(r for floor, r in TIERS if v >= floor)
+
+
+def account_rate(day, trailing_volume=0, first_week_volume=0) -> Decimal:
+    """The taker rate on `day` of an account's life, for accounts whose first fill is on or after
+    November 6, 2026. Day 1 is the Eastern calendar day of the first filled order.
+
+    Days 1 to 7 pay 0.0695 whatever the volume. Days 8 to 30 use the higher of the first seven
+    days' taker volume scaled by 30/7 and the trailing 30 day volume. From day 31 it is the trailing
+    volume alone. Not covered: the November 2026 rule for older accounts (the better of the trailing
+    tier and the October tier) and manual overrides.
+    """
+    if day < 1:
+        raise ValueError("day counts from 1")
+    if day <= 7:
+        return TIERS[0][1]
+    if day <= 30:
+        return rate(max(Decimal(str(first_week_volume)) * 30 / 7, Decimal(str(trailing_volume))))
+    return rate(trailing_volume)
 
 
 def taker_fee(contracts, price_cents, volume_30d=0) -> Decimal:
