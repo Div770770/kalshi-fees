@@ -114,6 +114,8 @@ For Claude Desktop or any other MCP client, add it to the client's config:
 | `polymarket_us_fee` | the Polymarket US taker fee at your 30 day volume tier, next to Kalshi's fee on the same order |
 | `polymarket_us_combo_fee` | the Polymarket US combo taker fee before and after the November 11, 2026 change |
 
+With Docker instead: `docker build -t kalshi-fees .` then `docker run -i --rm kalshi-fees` as the command.
+
 Only `kalshi_series_fee_type` uses the network, and it reads one public endpoint without a key. Nothing places orders or touches an account.
 
 ## Calculators in the browser
