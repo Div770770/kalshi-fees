@@ -90,6 +90,32 @@ Taker fee on 1,000 contracts (`python3 polymarket_us.py` prints this):
 
 Resting orders run the other way on some markets: Polymarket US charges them nothing, and Kalshi charges them on the series listed above. New Polymarket US accounts pay 0.0695 for their first seven days, and combos use a separate curve (`combo_fee`). Source: [Polymarket US fee schedule](https://docs.polymarket.us/fees), read November 9, 2026. On the same day Polymarket's public market API (`gateway.polymarket.us/v1/markets`) listed `feeCoefficient` 0.095, the Tier 1 rate, on all 3,000 open markets checked. The full Polymarket US schedule written out (tiers, how volume is counted, the new account window, rebates, combos): [Polymarket US fees](https://evdesk.ai/learn/polymarket-us-fees). The comparison written out, with a worked example: [Kalshi vs Polymarket US fees](https://evdesk.ai/learn/kalshi-vs-polymarket-fees).
 
+## MCP server
+
+`mcp_server.py` puts the same functions in front of an AI assistant over the Model Context Protocol (stdio, no dependencies, Python 3.8+). Ask it what 2,500 contracts at 37c cost to take, which side of a market charges a resting order, or how much a quarter Kelly stake is at your own probability, and it answers from the arithmetic above rather than from memory.
+
+```sh
+git clone https://github.com/Div770770/kalshi-fees
+claude mcp add kalshi-fees -- python3 /path/to/kalshi-fees/mcp_server.py
+```
+
+For Claude Desktop or any other MCP client, add it to the client's config:
+
+```json
+{"mcpServers": {"kalshi-fees": {"command": "python3", "args": ["/path/to/kalshi-fees/mcp_server.py"]}}}
+```
+
+| Tool | What it returns |
+|---|---|
+| `kalshi_fee` | cost, fee and total for one fill, taker or maker, direct ($0.0001) or broker ($0.01) grid |
+| `kalshi_breakeven` | the win probability needed after the fee, and the price as American odds before and after the fee |
+| `kalshi_kelly` | the Kelly stake as a share of bankroll for your probability, fee included, any Kelly fraction |
+| `kalshi_series_fee_type` | whether a series charges resting orders, and its fee multiplier, read live from Kalshi's public API |
+| `polymarket_us_fee` | the Polymarket US taker fee at your 30 day volume tier, next to Kalshi's fee on the same order |
+| `polymarket_us_combo_fee` | the Polymarket US combo taker fee before and after the November 11, 2026 change |
+
+Only `kalshi_series_fee_type` uses the network, and it reads one public endpoint without a key. Nothing places orders or touches an account.
+
 ## Calculators in the browser
 
 The same math, free, no sign-up:
