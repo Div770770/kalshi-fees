@@ -128,6 +128,8 @@ The same math, free, no sign-up:
 - [Kalshi vs Polymarket US fee calculator](https://evdesk.ai/tools/kalshi-vs-polymarket-fee-calculator): the taker fee on the same order at both exchanges, by Polymarket US volume tier
 - [Polymarket US combo fee calculator](https://evdesk.ai/tools/polymarket-us-combo-fee-calculator): the combo taker fee before and after the November 11, 2026 change, by tier
 
+On combos Kalshi charges takers its ordinary curve and makers 0.035 (half the taker rate, since August 20, 2026), while Polymarket US adds a (1 - P)^4 term, so the gap is widest on cheap combos: [Kalshi vs Polymarket US combo fees](https://evdesk.ai/learn/kalshi-vs-polymarket-combo-fees).
+
 ## Tests
 
 ```sh
